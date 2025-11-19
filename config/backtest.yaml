@@ -1,0 +1,32 @@
+# vn.py 回测配置
+
+backtest:
+  start_date: "2024-08-23"
+  end_date: "2024-09-01"
+  capital: 10000000  # 初始资金：1000万
+  use_vnpy_engine: true  # 是否使用真实的vn.py回测引擎（需要安装polars）
+  
+strategy:
+  name: "WeeklyRotationStrategy"
+  rebalance_day: "Monday"  # 每周一调仓
+  top_n: 20  # 选取top 20只股票
+  
+weights:
+  method: "equal"  # equal: 等权重, score: 按分数加权
+  max_single_weight: 0.10  # 单股最大权重10%
+  
+costs:
+  commission: 0.0003  # 佣金 0.03%
+  slippage: 0.0002  # 滑点 0.02%
+  
+risk_control:
+  max_turnover: 0.40  # 单次换手不超过40%
+  sector_neutral: false  # 是否行业中性化
+  max_sector_weight: 0.30  # 最大行业权重（如果启用行业中性）
+  
+output:
+  save_trades: true
+  save_positions: true
+  save_equity_curve: true
+  report_path: "data/backtest_results"
+

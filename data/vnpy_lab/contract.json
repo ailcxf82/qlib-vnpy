@@ -1,0 +1,1796 @@
+{
+  "000001.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000002.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000063.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000100.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000157.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000166.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000301.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000333.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000338.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000408.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000425.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000538.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000568.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000596.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000617.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000625.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000630.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000651.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000661.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000708.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000725.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000768.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000776.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000786.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000792.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000800.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000807.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000858.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000876.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000895.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000938.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000963.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000975.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000977.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000983.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "000999.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "001289.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "001965.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "001979.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002001.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002027.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002028.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002049.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002050.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002074.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002129.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002142.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002179.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002180.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002230.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002236.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002241.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002252.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002304.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002311.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002352.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002371.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002415.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002422.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002459.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002460.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002463.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002466.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002475.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002493.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002594.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002600.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002601.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002648.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002709.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002714.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002736.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002916.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002920.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "002938.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "003816.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300014.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300015.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300033.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300059.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300122.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300124.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300274.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300308.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300316.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300347.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300394.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300408.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300413.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300418.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300433.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300442.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300498.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300502.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300628.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300661.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300750.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300759.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300760.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300782.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300832.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300896.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300979.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "300999.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "301236.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "301269.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "302132.SZSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600000.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600009.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600010.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600011.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600015.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600016.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600018.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600019.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600023.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600025.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600026.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600027.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600028.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600029.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600030.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600031.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600036.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600039.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600048.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600050.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600061.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600066.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600085.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600089.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600104.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600111.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600115.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600150.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600160.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600161.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600176.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600183.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600188.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600196.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600219.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600233.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600276.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600309.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600332.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600346.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600362.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600372.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600377.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600406.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600415.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600426.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600436.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600438.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600460.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600482.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600489.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600515.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600519.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600547.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600570.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600584.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600585.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600588.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600600.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600660.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600674.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600690.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600741.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600760.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600795.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600803.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600809.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600845.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600875.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600886.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600887.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600893.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600900.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600905.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600918.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600919.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600926.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600938.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600941.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600958.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600989.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "600999.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601006.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601009.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601012.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601021.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601058.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601059.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601066.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601077.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601088.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601100.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601111.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601117.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601127.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601136.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601138.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601166.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601169.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601186.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601211.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601225.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601229.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601236.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601238.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601288.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601298.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601318.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601319.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601328.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601336.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601360.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601377.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601390.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601398.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601600.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601601.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601607.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601618.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601628.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601633.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601658.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601668.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601669.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601688.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601689.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601698.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601699.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601728.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601766.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601788.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601799.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601800.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601808.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601816.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601818.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601825.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601838.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601857.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601865.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601868.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601872.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601877.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601878.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601881.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601888.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601898.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601899.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601901.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601916.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601919.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601939.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601985.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601988.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601995.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "601998.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "603019.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "603195.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "603259.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "603260.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "603288.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "603296.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "603369.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "603392.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "603501.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "603799.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "603806.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "603833.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "603986.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "603993.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "605117.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "605499.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688008.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688009.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688012.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688036.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688041.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688047.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688082.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688111.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688126.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688169.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688187.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688223.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688256.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688271.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688303.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688396.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688472.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688506.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688599.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  },
+  "688981.SSE": {
+    "size": 100,
+    "pricetick": 0.01,
+    "long_rate": 0.0003,
+    "short_rate": 0.0003
+  }
+}

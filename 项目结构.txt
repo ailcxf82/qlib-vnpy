@@ -1,0 +1,207 @@
+Qlib1114/                                   # 项目根目录
+│
+├── config/                                 # 配置文件目录
+│   ├── data.yaml                          # 数据配置（Qlib路径、股票池、时间）
+│   ├── factor.yaml                        # 因子配置（技术+基本面因子列表）
+│   ├── model.yaml                         # 模型配置（LightGBM/XGBoost/CatBoost）
+│   ├── pipeline.yaml                      # 训练配置（滚动窗口、标签定义）
+│   └── backtest.yaml                      # 回测配置（资金、费用、风控）
+│
+├── data/                                   # 数据目录
+│   ├── raw/                               # 原始数据（运行时生成）
+│   ├── intermediate/                      # 中间数据（因子、特征）
+│   ├── predictions/                       # 预测结果（CSV文件）
+│   │   └── pred_YYYY-MM-DD.csv           # 每周预测结果
+│   ├── models/                            # 训练好的模型
+│   │   └── model_YYYYMMDD.txt            # LightGBM模型文件
+│   └── backtest_results/                  # 回测结果
+│       ├── equity_curve.csv              # 权益曲线
+│       ├── trades.csv                    # 交易记录
+│       └── positions.csv                 # 持仓记录
+│
+├── factors/                                # 因子计算模块
+│   ├── __init__.py                        # 模块初始化
+│   ├── base_factors.py                    # 技术因子（30+指标）
+│   │   └── 包含：MA, RSI, MACD, 布林带, ATR, KDJ等
+│   ├── fundamental_factors.py             # 基本面因子（12+指标）
+│   │   └── 包含：PE, PB, ROE, 盈利能力, 成长性等
+│   └── factor_engine.py                   # 因子引擎
+│       └── Qlib初始化、数据获取、因子计算主逻辑
+│
+├── feature/                                # 特征工程模块
+│   ├── __init__.py                        # 模块初始化
+│   ├── label.py                           # 标签生成
+│   │   └── 下周收益率、排名标签、二分类标签
+│   ├── dataset_builder.py                 # 数据集构建
+│   │   └── 特征对齐、预处理、训练测试划分
+│   └── feature_pipeline.py                # 特征流程
+│       └── 端到端特征生成（因子→标签→数据集）
+│
+├── model/                                  # 模型训练和预测模块
+│   ├── __init__.py                        # 模块初始化
+│   ├── lgb_model.py                       # LightGBM模型封装
+│   │   └── 训练、预测、特征重要度
+│   ├── trainer.py                         # 训练器
+│   │   └── 统一训练接口、模型保存加载
+│   ├── predictor.py                       # 预测器
+│   │   └── 单次预测、批量预测
+│   └── metrics.py                         # 评估指标
+│       └── IC, Rank IC, MSE, MAE, 多空收益
+│
+├── pipeline/                               # 训练和预测流程
+│   ├── __init__.py                        # 模块初始化
+│   ├── run_train.py                       # 滚动训练主程序
+│   │   └── 周频滚动训练（3年窗口，每周滚动）
+│   ├── run_predict.py                     # 滚动预测主程序
+│   │   └── 为每周生成预测结果
+│   └── run_all.py                         # 一键运行
+│       └── 训练+预测完整流程
+│
+├── backtest/                               # 回测模块
+│   ├── __init__.py                        # 模块初始化
+│   ├── vnpy_weekly_strategy.py            # vn.py策略类
+│   │   └── 周频轮动策略、调仓逻辑、风控
+│   └── run_vnpy_backtest.py               # 回测引擎
+│       └── 简化回测引擎、绩效计算、结果输出
+│
+├── utils/                                  # 工具模块
+│   ├── __init__.py                        # 模块初始化
+│   ├── logger.py                          # 日志工具
+│   │   └── 日志器设置、文件日志、控制台输出
+│   ├── timer.py                           # 计时工具
+│   │   └── 计时器、性能分析、函数装饰器
+│   └── tools.py                           # 通用工具
+│       └── YAML读写、缩尾、标准化、中性化
+│
+├── logs/                                   # 日志目录（运行时生成）
+│   ├── rolling_train_*.log                # 训练日志
+│   ├── rolling_predict_*.log              # 预测日志
+│   └── vnpy_backtest_*.log                # 回测日志
+│
+├── README.md                               # 完整项目文档
+├── 快速开始.md                             # 快速上手指南
+├── 项目总览.md                             # 项目功能总览
+├── 项目结构.txt                            # 本文件（目录树）
+│
+├── requirements.txt                        # Python依赖包列表
+├── example_usage.py                        # 使用示例和环境检查
+├── .gitignore                             # Git忽略文件
+│
+└── Readme                                  # 原始需求文档
+
+
+═══════════════════════════════════════════════════════════════
+                        核心文件说明
+═══════════════════════════════════════════════════════════════
+
+【配置文件】
+  config/data.yaml      → Qlib数据路径、股票池、时间范围
+  config/factor.yaml    → 技术和基本面因子列表
+  config/model.yaml     → 模型类型和参数（支持GPU）
+  config/pipeline.yaml  → 滚动训练窗口、标签定义
+  config/backtest.yaml  → 回测资金、费用、风控参数
+
+【因子计算】
+  factors/base_factors.py         → 30+技术指标
+  factors/fundamental_factors.py  → 12+基本面指标
+  factors/factor_engine.py        → 因子计算引擎
+
+【特征工程】
+  feature/label.py              → 标签生成（下周收益率）
+  feature/dataset_builder.py    → 数据预处理
+  feature/feature_pipeline.py   → 完整流程
+
+【模型训练】
+  model/lgb_model.py    → LightGBM模型
+  model/trainer.py      → 训练器（支持多种模型）
+  model/predictor.py    → 预测器
+  model/metrics.py      → 评估指标（IC、Rank IC等）
+
+【训练流程】
+  pipeline/run_train.py    → 滚动训练（3年窗口）
+  pipeline/run_predict.py  → 滚动预测
+  pipeline/run_all.py      → 一键运行
+
+【回测系统】
+  backtest/vnpy_weekly_strategy.py  → 周频策略
+  backtest/run_vnpy_backtest.py     → 回测引擎
+
+【工具模块】
+  utils/logger.py  → 日志系统
+  utils/timer.py   → 计时工具
+  utils/tools.py   → 通用函数
+
+
+═══════════════════════════════════════════════════════════════
+                        使用流程
+═══════════════════════════════════════════════════════════════
+
+1. 安装依赖
+   pip install -r requirements.txt
+
+2. 初始化Qlib数据
+   python -m qlib.run.get_data qlib_data --target_dir ~/.qlib/qlib_data/cn_data --region cn
+
+3. 检查环境
+   python example_usage.py
+
+4. 一键运行
+   python pipeline/run_all.py
+
+5. 查看结果
+   - 日志：logs/
+   - 模型：data/models/
+   - 预测：data/predictions/
+   - 回测：data/backtest_results/
+
+
+═══════════════════════════════════════════════════════════════
+                        文件统计
+═══════════════════════════════════════════════════════════════
+
+配置文件：5个
+Python模块：22个
+文档文件：5个
+总计：32个文件
+
+代码行数（估计）：
+  因子计算：~600行
+  特征工程：~400行
+  模型训练：~500行
+  回测系统：~600行
+  工具模块：~300行
+  Pipeline：~500行
+  总计：~2900行
+
+
+═══════════════════════════════════════════════════════════════
+                        功能覆盖
+═══════════════════════════════════════════════════════════════
+
+✅ Qlib数据初始化
+✅ 技术因子计算（30+）
+✅ 基本面因子计算（12+）
+✅ 标签生成（下周收益率）
+✅ 特征预处理（缩尾、标准化）
+✅ LightGBM模型训练
+✅ 周频滚动训练（3年窗口）
+✅ 模型预测和保存
+✅ 特征重要度分析
+✅ GPU加速支持
+✅ vn.py策略实现
+✅ 周频调仓逻辑
+✅ 风险控制（权重、换手）
+✅ 费用模拟（佣金、滑点）
+✅ 回测引擎
+✅ 绩效分析（收益、回撤、夏普）
+✅ 完整文档
+
+
+═══════════════════════════════════════════════════════════════
+
+项目状态：✅ 完成
+版本：v1.0
+创建日期：2024年11月
+
+所有需求已实现，系统可以正常运行！
+

@@ -1,0 +1,76 @@
+1. Qlib 滚动训练 + 预测模块
+
+    使用 A 股数据（已准备好或由用户提供数据路径）
+
+    支持技术因子 + 基本面因子
+
+    周频标签（如下周收益率）
+
+    每周滚动训练
+
+    每周生成预测信号（CSV）
+
+2. vn.py 周频回测模块
+
+    每周调仓
+
+    从 Qlib 预测生成的 CSV 中读取股票列表与权重
+
+    支持手续费、滑点
+
+    简单风险控制与换手限制
+
+    输出收益、回撤、夏普比率
+
+3. 最终工程结构如下：
+
+    quant_system/
+    │
+    ├── config/
+    │   ├── data.yaml              # 数据路径/字段/交易日
+    │   ├── factor.yaml            # 技术因子 + 基本面因子配置
+    │   ├── model.yaml             # 模型配置（LightGBM/XGBoost/MLP 等）
+    │   ├── pipeline.yaml          # 滚动训练参数、标签设定、频率等
+    │   ├── backtest.yaml          # vn.py 回测参数
+    │
+    ├── data/
+    │   ├── raw/                   # 原始数据（Qlib 格式）
+    │   ├── intermediate/          # 中间文件（因子、对齐后的 panel）
+    │   └── predictions/           # 模型输出的预测分数
+    │
+    ├── factors/
+    │   ├── base_factors.py        # 技术因子
+    │   ├── fundamental_factors.py # 基本面因子
+    │   └── factor_engine.py       # 因子计算入口，自动管理因子库
+    │
+    ├── feature/
+    │   ├── dataset_builder.py     # 读取因子 → 生成训练数据集
+    │   ├── label.py               # Label 定义，如下周收益率
+    │   └── feature_pipeline.py    # 全流程：因子+标签→dataset
+    │
+    ├── model/
+    │   ├── trainer.py             # 训练器（支持滚动训练）
+    │   ├── predictor.py           # 预测器（多模型可切换）
+    │   ├── lgb_model.py           # LightGBM 包装类
+    │   └── metrics.py             # IC、RankIC、回测指标
+    │
+    ├── pipeline/
+    │   ├── run_train.py           # 年→周滚动训练入口
+    │   ├── run_predict.py         # 读取模型预测全市场
+    │   └── run_all.py             # 一键执行训练 + 预测
+    │
+    ├── backtest/
+    │   ├── vnpy_weekly_strategy.py  # 周频交易策略
+    │   └── run_vnpy_backtest.py     # 一键回测入口
+    │
+    ├── live/
+    │   ├── live_strategy.py        # vn.py 实盘版
+    │   └── signal_server.py        # 为交易系统提供信号
+    │
+    ├── utils/
+    │   ├── logger.py
+    │   ├── timer.py
+    │   └── tools.py
+    │
+    ├── README.md
+    └── requirements.txt

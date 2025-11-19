@@ -1,0 +1,28 @@
+# 滚动训练配置
+
+rolling:
+  train_window: 156  # 3年的周数 (52周 * 3)
+  step: 1  # 每周向前滚动1周
+  test_window: 1  # 预测下一周
+  is_weekly: False
+  
+label:
+  name: "next_week_return"
+  expr: "Ref($close, -5) / $close - 1"  # 下周收益率（5个交易日后）
+  description: "下周收益率"
+
+training:
+  start_date: "2024-01-01"
+  end_date: "2024-12-31"
+  split_ratio: 0.8  # 训练集比例
+  
+feature_engineering:
+  winsorize: true
+  winsorize_quantile: [0.01, 0.99]
+  standardize: true
+  fillna_method: "mean"  # mean, median, forward, backward
+  
+validation:
+  method: "time_series"  # 时序验证
+  n_splits: 5
+

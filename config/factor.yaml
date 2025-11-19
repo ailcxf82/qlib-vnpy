@@ -1,0 +1,85 @@
+# 因子配置
+
+# 技术因子
+technical_factors:
+  - name: "MA5"
+    expr: "Mean($close, 5)"
+    description: "5日均线"
+  
+  - name: "MA10"
+    expr: "Mean($close, 10)"
+    description: "10日均线"
+  
+  - name: "MA20"
+    expr: "Mean($close, 20)"
+    description: "20日均线"
+  
+  - name: "MA60"
+    expr: "Mean($close, 60)"
+    description: "60日均线"
+  
+  - name: "RSI6"
+    description: "6日RSI"
+  
+  - name: "RSI12"
+    description: "12日RSI"
+  
+  - name: "Volatility20"
+    expr: "Std($close, 20)"
+    description: "20日波动率"
+  
+  - name: "Volume_MA5"
+    expr: "Mean($volume, 5)"
+    description: "5日成交量均值"
+  
+  - name: "MACD"
+    description: "MACD指标"
+  
+  - name: "BOLL_Upper"
+    description: "布林带上轨"
+  
+  - name: "BOLL_Lower"
+    description: "布林带下轨"
+  
+  - name: "ATR14"
+    description: "14日平均真实波幅"
+  
+  - name: "ROC20"
+    expr: "$close / Ref($close, 20) - 1"
+    description: "20日价格变化率"
+
+# 基本面因子
+fundamental_factors:
+  - name: "PE"
+    description: "市盈率"
+  
+  - name: "PB"
+    description: "市净率"
+  
+  - name: "PS"
+    description: "市销率"
+  
+  - name: "ROE"
+    description: "净资产收益率"
+  
+  - name: "ROA"
+    description: "总资产收益率"
+  
+  - name: "ProfitMargin"
+    description: "净利润率"
+  
+  - name: "DebtRatio"
+    description: "资产负债率"
+  
+  - name: "CurrentRatio"
+    description: "流动比率"
+  
+  - name: "RevenueGrowth"
+    description: "营收增长率"
+  
+  - name: "NetProfitGrowth"
+    description: "净利润增长率"
+  
+  - name: "MarketCap"
+    description: "市值"
+
