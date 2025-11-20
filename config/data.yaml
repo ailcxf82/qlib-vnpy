@@ -9,7 +9,7 @@ market:
   end_time: "2024-12-31"
   
 calendar:
-  freq: "week"  # 周频
+  freq: "day"  # 周频
   trading_day: "Monday"  # 每周一调仓
   
 paths:

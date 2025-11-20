@@ -54,10 +54,18 @@ class RollingPredictor:
         from datetime import timedelta
         feature_start = (pd.to_datetime(predict_date) - timedelta(days=120)).strftime('%Y-%m-%d')
         
+        # 应该使用前一个交易日的数据
+        from utils.tools import get_real_trade_dates
+        trade_dates = get_real_trade_dates(feature_start, predict_date)
+        if len(trade_dates) > 1:
+            end_time = trade_dates[-2]  # 前一个交易日
+        else:
+            end_time = feature_start
+
         with Timer("特征生成"):
             features, _ = self.feature_pipeline.run(
                 start_time=feature_start,
-                end_time=predict_date,
+                end_time=end_time,
                 instruments='csi300_file'  # 从文件读取CSI300股票代码
             )
         
@@ -65,13 +73,63 @@ class RollingPredictor:
             default_logger.warning("特征生成失败")
             return None
         
-        # 3. 获取最新一天的特征
+        # 3. 提取最新日期的特征 - 修复版
+        default_logger.info(f"特征数据形状: {features.shape}")
+        default_logger.info(f"特征索引类型: {type(features.index)}")
+        
         if isinstance(features.index, pd.MultiIndex):
+            # 情况1: MultiIndex (instrument, datetime) 或 (datetime, instrument)
+            # 判断哪一层是日期
+            index_names = features.index.names
+            
+            if 'datetime' in index_names:
+                date_level = 'datetime'
+            elif 'date' in index_names:
+                date_level = 'date'
+            else:
+                # 假设第二层是日期
+                date_level = 1
+            
+            latest_date = features.index.get_level_values(date_level).max()
+            latest_features = features.xs(latest_date, level=date_level)
+            
+            default_logger.info(f"从 MultiIndex 提取最新日期: {latest_date}")
+            
+        elif 'instrument' in features.columns:
+            # 情况2: 单层索引是日期，instrument 是列（实际情况）
             # 获取最新日期
-            latest_date = features.index.get_level_values(1).max()
-            latest_features = features.xs(latest_date, level=1)
+            latest_date = features.index.max()
+            latest_features = features[features.index == latest_date].copy()
+            
+            # 设置 instrument 为索引（方便后续处理）
+            if len(latest_features) > 0:
+                latest_features = latest_features.reset_index(drop=True)
+            
+            default_logger.info(f"从单层索引提取最新日期: {latest_date}")
+            default_logger.info(f"最新日期的股票数: {len(latest_features)}")
+            
         else:
+            # 情况3: 已经是单日期的数据
             latest_features = features
+            default_logger.warning("无法确定日期结构，使用全部数据")
+        
+        # 验证数据量
+        expected_stocks = 300  # CSI300 大约有 300 只股票
+        actual_stocks = len(latest_features)
+        
+        if actual_stocks > expected_stocks * 2:
+            default_logger.error(
+                f"❌ 数据异常：预期约 {expected_stocks} 只股票，实际 {actual_stocks} 行\n"
+                f"   这可能包含了多个日期的数据！"
+            )
+            # 强制只取最后 expected_stocks 行（按日期排序后）
+            if isinstance(latest_features.index, pd.DatetimeIndex):
+                latest_features = latest_features.sort_index().tail(expected_stocks)
+            else:
+                latest_features = latest_features.tail(expected_stocks)
+            default_logger.warning(f"强制截取最后 {expected_stocks} 行")
+        
+        default_logger.info(f"最终用于预测的样本数: {len(latest_features)}")
         
         # 4. 预测
         output_dir = f"{save_dir}/predictions"
@@ -108,7 +166,7 @@ class RollingPredictor:
         predict_dates = get_real_trade_dates(start_date, end_date)
 
         # 为每个日期预测
-        predictions = []
+        predictions = [] 
         
         for predict_date in predict_dates:
             # 查找对应的模型

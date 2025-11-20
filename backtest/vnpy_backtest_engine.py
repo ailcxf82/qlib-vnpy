@@ -240,7 +240,7 @@ class WeeklyRotationAlphaStrategy(AlphaStrategy):
         self.max_single_weight = setting.get('max_single_weight', 0.10)
         self.max_turnover = setting.get('max_turnover', 0.40)
         self.prediction_dir = setting.get('prediction_dir', 'data/predictions')
-        
+        self.freq = setting.get('freq', 'day')
         # 状态
         self.current_date = None
         self.last_rebalance_date = None
@@ -259,13 +259,18 @@ class WeeklyRotationAlphaStrategy(AlphaStrategy):
         first_bar = list(bars.values())[0]
         current_date = first_bar.datetime.date()
         
-        # 判断是否周一（需要调仓）
-        if current_date.weekday() == 0:  # 周一
-            if self.last_rebalance_date != current_date:
+        if self.freq == 'day':
+            # if self.last_rebalance_date != current_date:
                 self.rebalance(bars, current_date)
-                self.last_rebalance_date = current_date
-        else:
-            self.current_date = current_date
+                # self.last_rebalance_date = current_date
+        elif self.freq == 'week':
+            # 判断是否周一（需要调仓）
+            if current_date.weekday() == 0:  # 周一
+                if self.last_rebalance_date != current_date:
+                    self.rebalance(bars, current_date)
+                    self.last_rebalance_date = current_date
+            else:
+                self.current_date = current_date
     
     def load_predictions(self, date: datetime.date) -> pd.DataFrame:
         """加载预测文件"""
@@ -296,6 +301,7 @@ class WeeklyRotationAlphaStrategy(AlphaStrategy):
         if predictions is None:
             default_logger.warning("无预测数据，跳过调仓")
             return
+
         
         # 选股
         predictions = predictions.sort_values('score', ascending=False)
@@ -324,9 +330,16 @@ class WeeklyRotationAlphaStrategy(AlphaStrategy):
             selected_vt_symbols.add(vt_symbol)
             
             if vt_symbol not in bars:
+                default_logger.warning(f"股票 {vt_symbol} 无K线数据，跳过")
                 continue
             
             bar = bars[vt_symbol]
+            
+            # 检查价格是否有效
+            if bar.close_price is None or pd.isna(bar.close_price) or bar.close_price <= 0:
+                default_logger.warning(f"股票 {vt_symbol} 收盘价无效: {bar.close_price}，跳过")
+                continue
+            
             target_value = current_value * weight
             target_volume = int(target_value / bar.close_price / 100) * 100  # 转换为手
             
@@ -337,7 +350,12 @@ class WeeklyRotationAlphaStrategy(AlphaStrategy):
         for vt_symbol in list(self.pos_data.keys()):
             if vt_symbol not in selected_vt_symbols and self.pos_data[vt_symbol] > 0:
                 if vt_symbol in bars:
-                    self.sell(vt_symbol, bars[vt_symbol].close_price, self.pos_data[vt_symbol])
+                    bar = bars[vt_symbol]
+                    # 检查价格是否有效
+                    if bar.close_price is None or pd.isna(bar.close_price) or bar.close_price <= 0:
+                        default_logger.warning(f"股票 {vt_symbol} 收盘价无效，无法卖出")
+                        continue
+                    self.sell(vt_symbol, bar.close_price, self.pos_data[vt_symbol])
         
         # 再调整持仓到目标
         for vt_symbol, target_volume in target_positions.items():
@@ -347,14 +365,24 @@ class WeeklyRotationAlphaStrategy(AlphaStrategy):
                 # 买入
                 buy_volume = target_volume - current_pos
                 if vt_symbol in bars:
-                    self.buy(vt_symbol, bars[vt_symbol].close_price, buy_volume)
-                    default_logger.info(f"买入: {vt_symbol}, 价格: {bars[vt_symbol].close_price}, 数量: {buy_volume}")
+                    bar = bars[vt_symbol]
+                    # 检查价格是否有效
+                    if bar.close_price is None or pd.isna(bar.close_price) or bar.close_price <= 0:
+                        default_logger.warning(f"股票 {vt_symbol} 收盘价无效，无法买入")
+                        continue
+                    self.buy(vt_symbol, bar.close_price, buy_volume)
+                    default_logger.info(f"买入: {vt_symbol}, 价格: {bar.close_price}, 数量: {buy_volume}")
             elif target_volume < current_pos:
                 # 卖出
                 sell_volume = current_pos - target_volume
                 if vt_symbol in bars:
-                    self.sell(vt_symbol, bars[vt_symbol].close_price, sell_volume)
-                    default_logger.info(f"卖出: {vt_symbol}, 价格: {bars[vt_symbol].close_price}, 数量: {sell_volume}")
+                    bar = bars[vt_symbol]
+                    # 检查价格是否有效
+                    if bar.close_price is None or pd.isna(bar.close_price) or bar.close_price <= 0:
+                        default_logger.warning(f"股票 {vt_symbol} 收盘价无效，无法卖出")
+                        continue
+                    self.sell(vt_symbol, bar.close_price, sell_volume)
+                    default_logger.info(f"卖出: {vt_symbol}, 价格: {bar.close_price}, 数量: {sell_volume}")
     
     def normalize_instrument(self, instrument):
         """标准化股票代码为vn.py格式"""
@@ -387,7 +415,12 @@ class WeeklyRotationAlphaStrategy(AlphaStrategy):
         value = 0
         for vt_symbol, pos in self.pos_data.items():
             if vt_symbol in bars:
-                value += pos * bars[vt_symbol].close_price
+                bar = bars[vt_symbol]
+                # 检查价格是否有效
+                if bar.close_price is not None and not pd.isna(bar.close_price) and bar.close_price > 0:
+                    value += pos * bar.close_price
+                else:
+                    default_logger.warning(f"股票 {vt_symbol} 收盘价无效: {bar.close_price}，无法计算持仓价值")
         return value
     
     def on_trade(self, trade: TradeData) -> None:
