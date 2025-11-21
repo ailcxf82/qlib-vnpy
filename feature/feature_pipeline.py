@@ -46,19 +46,25 @@ class FeaturePipeline:
             return None, None
         
         # 2. 获取价格数据用于生成标签
+        # 扩展字段以支持更丰富的标签生成
         price_data = self.factor_engine.fetch_qlib_data(
             instruments=instruments,
             start_time=start_time,
             end_time=end_time,
-            fields=['$close']
+            fields=['$open', '$high', '$low', '$close', '$volume', '$factor']
         )
         
         # 3. 生成标签
         label_config = self.pipeline_config.get('label', {})
         forward_days = label_config.get('forward_days', 5)
+        label_type = label_config.get('type', 'return')  # 支持多种标签类型
         
-        labels = self.label_generator.generate_next_week_return(
+        default_logger.info(f"标签类型: {label_type}, 向前天数: {forward_days}")
+        
+        # 使用统一接口生成标签
+        labels = self.label_generator.generate_label(
             price_data,
+            label_type=label_type,
             forward_days=forward_days
         )
         

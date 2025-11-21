@@ -1,9 +1,16 @@
 """vn.py真实回测引擎集成"""
 import sys
 import os
+import warnings
 from pathlib import Path
 from datetime import datetime, timedelta
 from typing import List, Dict
+
+# 过滤 joblib resource_tracker 的警告（Windows系统常见问题，不影响功能）
+# 使用多种方式确保过滤所有相关警告
+warnings.filterwarnings('ignore', category=UserWarning, module='joblib')
+warnings.filterwarnings('ignore', message='.*resource_tracker.*')
+warnings.filterwarnings('ignore', message='.*FileNotFoundError.*系统找不到指定的路径.*')
 
 import pandas as pd
 import numpy as np

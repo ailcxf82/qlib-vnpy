@@ -1,8 +1,8 @@
 # vn.py 回测配置
 
 backtest:
-  start_date: "2024-08-23"
-  end_date: "2024-11-01"
+  start_date: "2025-01-01"
+  end_date: "2025-10-01"
   capital: 10000000  # 初始资金：1000万
   use_vnpy_engine: true  # 是否使用真实的vn.py回测引擎（需要安装polars）
   

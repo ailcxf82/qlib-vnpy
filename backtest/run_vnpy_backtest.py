@@ -2,6 +2,13 @@
 import sys
 import os
 from pathlib import Path
+import warnings
+
+# 过滤 joblib resource_tracker 的警告（Windows系统常见问题，不影响功能）
+# 使用多种方式确保过滤所有相关警告
+warnings.filterwarnings('ignore', category=UserWarning, module='joblib')
+warnings.filterwarnings('ignore', message='.*resource_tracker.*')
+warnings.filterwarnings('ignore', message='.*FileNotFoundError.*系统找不到指定的路径.*')
 
 # 添加项目根目录到Python路径
 project_root = Path(__file__).parent.parent

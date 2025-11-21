@@ -5,8 +5,8 @@ qlib:
   
 market:
   universe: "all"  # 股票池
-  start_time: "2024-06-01"
-  end_time: "2024-12-31"
+  start_time: "2024-01-01"
+  end_time: "2025-03-30"
   
 calendar:
   freq: "day"  # 周频

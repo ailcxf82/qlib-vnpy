@@ -64,25 +64,25 @@ def main():
     
     # 3. 回测
     logger.info("\n" + "=" * 80)
-    logger.info("阶段 3: 回测")
+    logger.info("阶段 3: 回测跳过")
     logger.info("=" * 80)
     
-    try:
-        from backtest.run_vnpy_backtest import SimpleBacktester
-        backtest_config = load_yaml('config/backtest.yaml')
+    # try:
+    #     from backtest.run_vnpy_backtest import SimpleBacktester
+    #     backtest_config = load_yaml('config/backtest.yaml')
         
-        backtester = SimpleBacktester(backtest_config, data_config)
+    #     backtester = SimpleBacktester(backtest_config, data_config)
         
-        backtest_start = backtest_config.get('backtest', {}).get('start_date', '2020-01-01')
-        backtest_end = backtest_config.get('backtest', {}).get('end_date', '2024-12-31')
+    #     backtest_start = backtest_config.get('backtest', {}).get('start_date', '2020-01-01')
+    #     backtest_end = backtest_config.get('backtest', {}).get('end_date', '2024-12-31')
         
-        with Timer("回测总时间"):
-            backtester.run(backtest_start, backtest_end)
+    #     with Timer("回测总时间"):
+    #         backtester.run(backtest_start, backtest_end)
         
-        logger.info("回测完成")
-    except Exception as e:
-        logger.warning(f"回测失败: {e}")
-        logger.info("跳过回测步骤")
+    #     logger.info("回测完成")
+    # except Exception as e:
+    #     logger.warning(f"回测失败: {e}")
+    #     logger.info("跳过回测步骤")
     
     # 4. 总结
     logger.info("\n" + "=" * 80)

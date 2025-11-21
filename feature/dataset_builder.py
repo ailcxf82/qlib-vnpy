@@ -25,6 +25,77 @@ class DatasetBuilder:
         else:
             return features, labels
     
+    def winsorize_cross_sectional(self, features, quantile_range=[0.01, 0.99]):
+        """
+        截面缩尾处理：在每个时间点分别进行缩尾
+        这样可以保留股票之间的相对差异
+        """
+        if isinstance(features.index, pd.MultiIndex):
+            # 获取时间层级（通常是第二层：datetime）
+            datetime_level = features.index.names[1] if len(features.index.names) > 1 else features.index.names[0]
+            
+            def winsorize_group(x):
+                if x.std() < 1e-8:  # 如果标准差太小，跳过
+                    return x
+                lower = x.quantile(quantile_range[0])
+                upper = x.quantile(quantile_range[1])
+                return x.clip(lower=lower, upper=upper)
+            
+            default_logger.info(f"使用截面缩尾处理，按 {datetime_level} 分组")
+            winsorized = features.groupby(level=datetime_level).transform(winsorize_group)
+            return winsorized
+        else:
+            # 单时间点数据，直接缩尾
+            result = features.copy()
+            for col in result.columns:
+                lower = result[col].quantile(quantile_range[0])
+                upper = result[col].quantile(quantile_range[1])
+                result[col] = result[col].clip(lower=lower, upper=upper)
+            return result
+    
+    def standardize_cross_sectional(self, features):
+        """
+        截面标准化：在每个时间点对所有股票分别标准化
+        这是量化投资中的标准做法，可以保留股票之间的相对差异
+        """
+        if isinstance(features.index, pd.MultiIndex):
+            # 获取时间层级
+            datetime_level = features.index.names[1] if len(features.index.names) > 1 else features.index.names[0]
+            
+            default_logger.info(f"使用截面标准化，按 {datetime_level} 分组")
+            
+            # 按时间分组标准化
+            standardized = features.groupby(level=datetime_level).transform(
+                lambda x: (x - x.mean()) / (x.std() + 1e-8)
+            )
+            return standardized
+        else:
+            # 单时间点数据
+            return (features - features.mean()) / (features.std() + 1e-8)
+    
+    def rank_transform(self, features):
+        """
+        排名转换：将特征值转换为百分位排名（0-1之间）
+        这是最推荐的方法，因为：
+        1. 对异常值不敏感
+        2. 最大化保留股票之间的相对差异
+        3. 所有特征都在相同的尺度上
+        """
+        if isinstance(features.index, pd.MultiIndex):
+            # 获取时间层级
+            datetime_level = features.index.names[1] if len(features.index.names) > 1 else features.index.names[0]
+            
+            default_logger.info(f"使用排名转换，按 {datetime_level} 分组")
+            
+            # 转换为百分位排名
+            ranked = features.groupby(level=datetime_level).transform(
+                lambda x: x.rank(pct=True)
+            )
+            return ranked
+        else:
+            # 单时间点数据
+            return features.rank(pct=True)
+    
     def preprocess_features(self, features):
         """预处理特征"""
         default_logger.info("开始特征预处理")
@@ -38,39 +109,74 @@ class DatasetBuilder:
         else:
             has_instrument = False
         
-        # 填充缺失值（只对数值列）
-        fillna_method = self.feature_engineering_config.get('fillna_method', 'mean')
+        # 填充缺失值（改进版）
+        fillna_method = self.feature_engineering_config.get('fillna_method', 'forward')
         default_logger.info(f"使用 {fillna_method} 方法填充缺失值")
         
-        if fillna_method == 'mean':
-            # 只对数值列计算均值
+        if fillna_method == 'forward':
+            # 推荐：前向填充，适合技术指标
+            features = features.ffill()
+            # 如果还有缺失（比如第一行），用后向填充
+            features = features.bfill()
+        elif fillna_method == 'median_cross_sectional':
+            # 截面中位数填充：用同一时间点其他股票的中位数
+            if isinstance(features.index, pd.MultiIndex):
+                datetime_level = features.index.names[1] if len(features.index.names) > 1 else features.index.names[0]
+                features = features.groupby(level=datetime_level).transform(
+                    lambda x: x.fillna(x.median())
+                )
+            else:
+                features = features.fillna(features.median())
+        elif fillna_method == 'mean':
+            # 全局均值填充（不推荐）
             numeric_cols = features.select_dtypes(include=[np.number]).columns
             features[numeric_cols] = features[numeric_cols].fillna(features[numeric_cols].mean())
         elif fillna_method == 'median':
-            # 只对数值列计算中位数
+            # 全局中位数填充（不推荐）
             numeric_cols = features.select_dtypes(include=[np.number]).columns
             features[numeric_cols] = features[numeric_cols].fillna(features[numeric_cols].median())
-        elif fillna_method == 'forward':
-            # 前向填充（使用新的API）
-            features = features.ffill()
         elif fillna_method == 'backward':
-            # 后向填充（使用新的API）
+            # 后向填充
             features = features.bfill()
         
-        # 缩尾处理
+        # 缩尾处理（改用截面缩尾）
         if self.feature_engineering_config.get('winsorize', True):
             quantile_range = self.feature_engineering_config.get(
                 'winsorize_quantile', [0.01, 0.99]
             )
-            for col in features.columns:
-                if features[col].dtype in ['float64', 'float32', 'int64', 'int32']:
-                    features[col] = winsorize(features[col], quantile_range)
+            # 使用截面缩尾而非全局缩尾
+            use_cross_sectional = self.feature_engineering_config.get('winsorize_cross_sectional', True)
+            if use_cross_sectional and isinstance(features.index, pd.MultiIndex):
+                features = self.winsorize_cross_sectional(features, quantile_range)
+                default_logger.info("完成截面缩尾处理")
+            else:
+                # 全局缩尾（不推荐，仅用于单时间点数据）
+                for col in features.columns:
+                    if features[col].dtype in ['float64', 'float32', 'int64', 'int32']:
+                        features[col] = winsorize(features[col], quantile_range)
+                default_logger.info("完成全局缩尾处理")
         
-        # 标准化
+        # 标准化（关键修复：改用截面标准化或排名转换）
         if self.feature_engineering_config.get('standardize', True):
-            for col in features.columns:
-                if features[col].dtype in ['float64', 'float32', 'int64', 'int32']:
-                    features[col] = standardize(features[col])
+            # 读取标准化方法配置，默认使用排名转换
+            standardize_method = self.feature_engineering_config.get('standardize_method', 'rank')
+            
+            if standardize_method == 'rank':
+                # 方法1：排名转换（最推荐）
+                features = self.rank_transform(features)
+                default_logger.info("✓ 使用排名转换完成特征标准化")
+            elif standardize_method == 'cross_sectional':
+                # 方法2：截面标准化（备选方案）
+                features = self.standardize_cross_sectional(features)
+                default_logger.info("✓ 使用截面标准化完成特征标准化")
+            elif standardize_method == 'global':
+                # 方法3：全局标准化（原方法，不推荐）
+                for col in features.columns:
+                    if features[col].dtype in ['float64', 'float32', 'int64', 'int32']:
+                        features[col] = standardize(features[col])
+                default_logger.warning("⚠ 使用全局标准化（不推荐，可能导致预测信号重复）")
+            else:
+                default_logger.info("跳过特征标准化")
         
         # 再次填充可能产生的NaN
         features = features.fillna(0)

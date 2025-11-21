@@ -1,6 +1,16 @@
 """模型训练器"""
 from __future__ import annotations
 
+# 必须在所有其他导入之前抑制 joblib 警告
+import suppress_joblib_warnings  # noqa: F401
+
+import warnings
+# 额外的警告过滤（双重保险）
+# 注意：warnings.filterwarnings 的 message 参数只接受字符串，不支持正则表达式
+warnings.filterwarnings('ignore', category=UserWarning, module='joblib')
+warnings.filterwarnings('ignore', category=UserWarning, message='resource_tracker')
+warnings.filterwarnings('ignore', category=UserWarning, message='FileNotFoundError')
+
 import pickle
 from typing import Optional
 
