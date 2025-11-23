@@ -80,6 +80,8 @@ class DatasetBuilder:
         1. 对异常值不敏感
         2. 最大化保留股票之间的相对差异
         3. 所有特征都在相同的尺度上
+        
+        改进：为相同值添加微小随机扰动，避免大量相同值导致rank后仍然相同
         """
         if isinstance(features.index, pd.MultiIndex):
             # 获取时间层级
@@ -88,13 +90,22 @@ class DatasetBuilder:
             default_logger.info(f"使用排名转换，按 {datetime_level} 分组")
             
             # 转换为百分位排名
-            ranked = features.groupby(level=datetime_level).transform(
-                lambda x: x.rank(pct=True)
+            # 先添加微小随机扰动打破相同值
+            np.random.seed(42)  # 固定随机种子保证可重复
+            noise = np.random.uniform(-1e-10, 1e-10, features.shape)
+            features_noisy = features + noise
+            
+            ranked = features_noisy.groupby(level=datetime_level).transform(
+                lambda x: x.rank(pct=True, method='first')  # 使用'first'方法处理相同值
             )
             return ranked
         else:
             # 单时间点数据
-            return features.rank(pct=True)
+            # 先添加微小随机扰动打破相同值
+            np.random.seed(42)  # 固定随机种子保证可重复
+            noise = np.random.uniform(-1e-10, 1e-10, features.shape)
+            features_noisy = features + noise
+            return features_noisy.rank(pct=True, method='first')  # 使用'first'方法处理相同值
     
     def preprocess_features(self, features):
         """预处理特征"""
@@ -178,8 +189,31 @@ class DatasetBuilder:
             else:
                 default_logger.info("跳过特征标准化")
         
-        # 再次填充可能产生的NaN
-        features = features.fillna(0)
+        # 再次填充可能产生的NaN（改进：不要简单填充为0）
+        # 使用更智能的填充方法，避免产生大量相同的值
+        if isinstance(features.index, pd.MultiIndex):
+            # MultiIndex：按时间点分组，使用截面中位数填充
+            datetime_level = features.index.names[1] if len(features.index.names) > 1 else features.index.names[0]
+            features = features.groupby(level=datetime_level).transform(
+                lambda x: x.fillna(x.median() if not x.median() == 0 else x.mean())
+            )
+            # 如果还有NaN（比如所有值都是NaN），使用0填充
+            features = features.fillna(0)
+        else:
+            # 单时间点：使用中位数填充
+            numeric_cols = features.select_dtypes(include=[np.number]).columns
+            for col in numeric_cols:
+                median_val = features[col].median()
+                if pd.notna(median_val) and median_val != 0:
+                    features[col] = features[col].fillna(median_val)
+                else:
+                    mean_val = features[col].mean()
+                    if pd.notna(mean_val):
+                        features[col] = features[col].fillna(mean_val)
+                    else:
+                        features[col] = features[col].fillna(0)
+            # 非数值列用0填充
+            features = features.fillna(0)
         
         # 替换inf
         features = features.replace([np.inf, -np.inf], 0)

@@ -9,13 +9,13 @@ rolling:
 label:
   name: "next_week_return"
   type: "excess_return"  # 标签类型：return, excess_return(推荐), volatility_adjusted, rank, binary, quantile
-  forward_days: 5  # 向前看的天数（5个交易日 = 1周）
+  forward_days: 3  # 向前看的天数（5个交易日 = 1周）
   expr: "Ref($close, -5) / $close - 1"  # 下周收益率（5个交易日后）
   description: "下周超额收益率"
 
 training:
   start_date: "2024-01-01"
-  end_date: "2025-03-30"
+  end_date: "2024-12-1"
   split_ratio: 0.8  # 训练集比例
   
 feature_engineering:
