@@ -11,7 +11,8 @@ os.chdir(project_root)  # 切换工作目录到项目根目录
 import pandas as pd
 import numpy as np
 from datetime import datetime
-from feature.feature_pipeline import FeaturePipeline
+#from feature.feature_pipeline import FeaturePipeline
+from feature.qlib_feature_pipeline import QlibFeaturePipeline
 from model.predictor import ModelPredictor
 from utils.logger import default_logger, setup_logger
 from utils.timer import Timer
@@ -26,7 +27,8 @@ class RollingPredictor:
         self.pipeline_config = pipeline_config
         self.model_config = model_config
         
-        self.feature_pipeline = FeaturePipeline(data_config, pipeline_config)
+        # self.feature_pipeline = FeaturePipeline(data_config, pipeline_config)
+        self.qlib_feature_pipeline = QlibFeaturePipeline(data_config, pipeline_config)
         self.predictor = ModelPredictor(model_config)
     
     def predict_single_date(self, predict_date, model_path, save_dir):
@@ -63,10 +65,15 @@ class RollingPredictor:
             end_time = feature_start
 
         with Timer("特征生成"):
-            features, _ = self.feature_pipeline.run(
+            # features, _ = self.feature_pipeline.run(
+            #     start_time=feature_start,
+            #     end_time=end_time,
+            #     instruments='csi300_file'  # 从文件读取CSI300股票代码
+            # )
+            features, _ = self.qlib_feature_pipeline.run(
                 start_time=feature_start,
-                end_time=end_time,
-                instruments='csi300_file'  # 从文件读取CSI300股票代码
+                end_time=end_time, 
+                instruments='csi300_file'
             )
         
         if features is None or len(features) == 0:

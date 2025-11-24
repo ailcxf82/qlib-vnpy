@@ -77,6 +77,9 @@ def main():
     # 只取最近的50个文件
     recent_files = pred_files[-50:] if len(pred_files) > 50 else pred_files
     
+    success_count = 0
+    error_count = 0
+    
     for i, pred_file in enumerate(recent_files, 1):
         try:
             # 提取日期
@@ -86,13 +89,27 @@ def main():
             pred_df = pd.read_csv(pred_file)
             
             if len(pred_df) < 5:  # 样本太少，跳过
+                if i <= 5:  # 只打印前5个的详细信息
+                    print(f"  跳过 {date_str}: 样本数太少 ({len(pred_df)})")
                 continue
             
             if qlib_available:
                 # 计算该日期之后的真实收益率
                 try:
                     # 获取股票列表，确保都是字符串类型
+                    if 'instrument' not in pred_df.columns:
+                        if i <= 5:
+                            print(f"  跳过 {date_str}: 预测文件缺少 'instrument' 列")
+                        error_count += 1
+                        continue
+                    
                     instruments = [str(inst) for inst in pred_df['instrument'].tolist()]
+                    
+                    if len(instruments) == 0:
+                        if i <= 5:
+                            print(f"  跳过 {date_str}: 股票列表为空")
+                        error_count += 1
+                        continue
                     
                     # 确保日期字符串格式正确
                     if not isinstance(date_str, str):
@@ -100,13 +117,26 @@ def main():
                     
                     # 获取价格数据
                     end_date = pd.Timestamp(date_str) + pd.Timedelta(days=forward_days+5)
-                    price_data = D.features(
-                        instruments=instruments,
-                        fields=['$close'],
-                        start_time=date_str,
-                        end_time=end_date.strftime('%Y-%m-%d'),
-                        freq='day'
-                    )
+                    
+                    try:
+                        price_data = D.features(
+                            instruments=instruments,
+                            fields=['$close'],
+                            start_time=date_str,
+                            end_time=end_date.strftime('%Y-%m-%d'),
+                            freq='day'
+                        )
+                    except Exception as e:
+                        if i <= 5:
+                            print(f"  跳过 {date_str}: 获取价格数据失败 - {type(e).__name__}: {e}")
+                        error_count += 1
+                        continue
+                    
+                    if price_data is None or len(price_data) == 0:
+                        if i <= 5:
+                            print(f"  跳过 {date_str}: 价格数据为空")
+                        error_count += 1
+                        continue
                     
                     # 计算收益率
                     true_returns = []
@@ -170,29 +200,57 @@ def main():
                     # 移除NaN
                     valid_data = pred_df.dropna(subset=['score', 'true_return'])
                     
-                    if len(valid_data) >= 10:  # 至少10个有效样本
-                        # 计算IC (Pearson相关系数)
+                    if len(valid_data) < 10:  # 至少10个有效样本
+                        if i <= 5:
+                            print(f"  跳过 {date_str}: 有效样本数不足 ({len(valid_data)} < 10)")
+                        error_count += 1
+                        continue
+                    
+                    # 检查是否有有效的 true_return
+                    if valid_data['true_return'].notna().sum() == 0:
+                        if i <= 5:
+                            print(f"  跳过 {date_str}: 没有有效的真实收益率数据")
+                        error_count += 1
+                        continue
+                    
+                    # 计算IC (Pearson相关系数)
+                    try:
                         ic, _ = pearsonr(valid_data['score'], valid_data['true_return'])
                         
                         # 计算Rank IC (Spearman相关系数)
                         rank_ic, _ = spearmanr(valid_data['score'], valid_data['true_return'])
                         
-                        ic_results.append(ic)
-                        rank_ic_results.append(rank_ic)
-                        dates.append(date_str)
-                        
-                        if i % 10 == 0:
-                            print(f"  进度: {i}/{len(recent_files)} - {date_str}: IC={ic:.4f}, RankIC={rank_ic:.4f}")
+                        if pd.notna(ic) and pd.notna(rank_ic):
+                            ic_results.append(ic)
+                            rank_ic_results.append(rank_ic)
+                            dates.append(date_str)
+                            success_count += 1
+                            
+                            if i % 10 == 0 or i <= 5:
+                                print(f"  {date_str}: IC={ic:.4f}, RankIC={rank_ic:.4f} (有效样本: {len(valid_data)})")
+                        else:
+                            if i <= 5:
+                                print(f"  跳过 {date_str}: IC计算结果为NaN")
+                            error_count += 1
+                    except Exception as e:
+                        if i <= 5:
+                            print(f"  跳过 {date_str}: 计算IC失败 - {type(e).__name__}: {e}")
+                        error_count += 1
+                        continue
                 
                 except Exception as e:
-                    print(f"  跳过 {date_str}: {e}")
-                    pass
+                    if i <= 5:
+                        print(f"  跳过 {date_str}: {type(e).__name__}: {e}")
+                    error_count += 1
+                    continue
             
         except Exception as e:
             print(f"  错误处理 {pred_file}: {e}")
             continue
     
     # 4. 展示结果
+    print(f"\n处理完成: 成功 {success_count} 个, 失败 {error_count} 个")
+    
     if len(ic_results) > 0:
         print("\n" + "="*80)
         print("IC统计结果")
